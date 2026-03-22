@@ -1,4 +1,4 @@
-def filter_by_state(transactions, state='EXECUTED'):
+def filter_by_state(transactions, state='EXECUTED') -> list[dict]:
     """
     Фильтрует список транзакций по значению ключа state. Возвращает отфильтрованный список словарей
     """
@@ -21,7 +21,7 @@ transactions = [
 result = filter_by_state(transactions)
 print(result)
 
-def sort_by_date(transactions, descending=True):
+def sort_by_date(transactions, descending=True) -> list[dict]:
     """Сортирует транзакции по дате."""
     return sorted(transactions, key=lambda x: x.get('date', ''), reverse=descending)
 
