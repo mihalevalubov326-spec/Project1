@@ -23,13 +23,16 @@ def mask_account_card(card_info: str) -> str:
 
     return f"{name_part} {masked_number}"
 
+
 print(mask_account_card("Maestro 7000792289606361"))
+
 
 def get_date(date_string: str) -> str:
     """Преобразует ISO дату в формат ДД.ММ.ГГГГ"""
-    date_part = date_string.split('T')[0]
-    year, month, day = date_part.split('-')
+    date_part = date_string.split("T")[0]
+    year, month, day = date_part.split("-")
     return f"{day}.{month}.{year}"
+
 
 formatted_date = get_date("2024-03-11T02:26:18.671407")
 print("Отформатированная дата:", formatted_date)
