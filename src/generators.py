@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Iterator
+from typing import Any, Dict, Iterator, List
 
 
 def filter_by_currency(transactions: List[Dict[str, Any]], currency: str) -> Iterator[Dict[str, Any]]:
@@ -60,8 +60,6 @@ print(next(descriptions))
 print(next(descriptions))
 print(next(descriptions))
 print(next(descriptions))
-
-from typing import Iterator
 
 
 def card_number_generator(start: int, end: int) -> Iterator[str]:

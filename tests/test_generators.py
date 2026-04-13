@@ -3,7 +3,6 @@ from typing import List, Dict, Any
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 
-
 @pytest.fixture
 def sample_transactions() -> List[Dict[str, Any]]:
     """Фикстура с тестовыми данными для фильтрации по валюте."""
