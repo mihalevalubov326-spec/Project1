@@ -11,7 +11,7 @@ def log(filename: Optional[str] = None) -> Callable:
 
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs) -> Any:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             # Получаем текущее время
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
