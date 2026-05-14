@@ -1,7 +1,7 @@
 import pytest
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, List, Dict
 from src.utils import load_transactions
 
 
@@ -21,8 +21,8 @@ def temp_json_file(tmp_path: Path) -> Any:
 def test_load_transactions_success(temp_json_file: Any) -> None:
     """Тест: успешная загрузка списка транзакций."""
     test_data: List[Dict[str, Any]] = [
-        {"id": 1, "amount": 100, "currency": "USD"},
-        {"id": 2, "amount": 200, "currency": "EUR"},
+        {"id": 1, "operationAmount": {"amount": "100", "currency": {"code": "USD"}}},
+        {"id": 2, "operationAmount": {"amount": "200", "currency": {"code": "EUR"}}},
     ]
     file_path = temp_json_file(test_data)
 

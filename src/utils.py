@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Any, Dict, List
+from typing import List, Dict, Any
 
 
 def load_transactions(file_path: str) -> List[Dict[str, Any]]:
@@ -25,5 +25,5 @@ def load_transactions(file_path: str) -> List[Dict[str, Any]]:
         else:
             return []
 
-    except json.JSONDecodeError as IOError:
+    except json.JSONDecodeError, IOError:
         return []
