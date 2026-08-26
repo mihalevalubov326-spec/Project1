@@ -1,21 +1,66 @@
-def get_mask_card_number(number: int) -> str:
-    """Функция маскировки номера банковской карты"""
+"""Модуль для маскировки номеров карт и счетов."""
 
-    some_list = []
-    conv_number = str(number)
-    count_stars = "*" * (len(conv_number) - 10)
-    divide_number = f"{conv_number[:6]}{count_stars}{conv_number[-4:]}"
+from typing import Union
 
-    for i in range(0, len(conv_number), 4):
-        some_list.append(divide_number[i : i + 4])
-    return " ".join(some_list)
+from src.logger_config import get_logger
+
+logger = get_logger("masks")
 
 
-def get_mask_card_account(number: int) -> str:
-    """Функция маскировки номера банковского счёта"""
-    conv_number = str(number)
-    return f"**{conv_number[-4:]}"
+def get_mask_card_number(number: Union[str, int]) -> str:
+    """
+    Маскирует номер банковской карты.
+
+    Аргументы:
+        number (Union[str, int]): Номер карты.
+
+    Возвращает:
+        str: Замаскированный номер карты.
+    """
+    logger.debug(f"Начало маскировки карты: {str(number)[:4]}...{str(number)[-4:]}")
+
+    try:
+        conv_number = str(number)
+
+        if not conv_number:
+            logger.error("Пустой номер карты")
+            raise ValueError("Номер карты не может быть пустым")
+
+        if len(conv_number) != 16:
+            logger.warning(f"Нестандартная длина номера карты: {len(conv_number)} цифр")
+
+        result = f"{conv_number[:4]} {conv_number[4:6]}** **** {conv_number[-4:]}"
+        logger.info(f"Маскировка карты выполнена: {result}")
+        return result
+
+    except Exception as e:
+        logger.error(f"Ошибка при маскировке карты: {e}", exc_info=True)
+        raise
 
 
-print(get_mask_card_number(7000792289606361))
-print(get_mask_card_account(73654108430135874305))
+def get_mask_card_account(number: Union[str, int]) -> str:
+    """
+    Маскирует номер банковского счёта.
+
+    Аргументы:
+        number (Union[str, int]): Номер счёта.
+
+    Возвращает:
+        str: Замаскированный номер счёта.
+    """
+    logger.debug(f"Начало маскировки счёта: {str(number)[-4:]}...")
+
+    try:
+        conv_number = str(number)
+
+        if not conv_number:
+            logger.error("Пустой номер счёта")
+            raise ValueError("Номер счёта не может быть пустым")
+
+        result = f"**{conv_number[-4:]}"
+        logger.info(f"Маскировка счёта выполнена: {result}")
+        return result
+
+    except Exception as e:
+        logger.error(f"Ошибка при маскировке счёта: {e}", exc_info=True)
+        raise
