@@ -1,7 +1,9 @@
-import pytest
 import json
 from pathlib import Path
-from typing import Any, List, Dict
+from typing import Any, Dict, List
+
+import pytest
+
 from src.utils import load_transactions
 
 

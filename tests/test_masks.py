@@ -38,11 +38,11 @@ class TestMaskCardNumber:
     @pytest.mark.parametrize(
         "input_number,expected",
         [
-            (1, "11"),
-            (12, "1212"),
-            (123, "1231"),
-            (1234, "1234"),
-            (12345, "1234 5234"),
+            (1, "1 ** **** 1"),
+            (12, "12 ** **** 12"),
+            (123, "123 ** **** 123"),
+            (1234, "1234 ** **** 1234"),
+            (12345, "1234 5** **** 2345"),
         ],
     )
     def test_mask_card_number_small_numbers(self, input_number: int, expected: str) -> None:

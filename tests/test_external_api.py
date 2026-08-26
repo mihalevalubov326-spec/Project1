@@ -1,7 +1,9 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
 import requests
-from unittest.mock import patch, MagicMock
-from src.external_api import get_exchange_rate, convert_operation_to_rub
+
+from src.external_api import convert_operation_to_rub, get_exchange_rate
 
 # ========== ТЕСТЫ ДЛЯ get_exchange_rate ==========
 
